@@ -552,7 +552,7 @@ export class JsonRpcProvider extends BaseProvider {
         return result;
     }
 
-    prepareRequest(method: string, params: any): [ string, Array<any> ] {
+    async prepareRequest(method: string, params: any): Promise<[ string, Array<any> ]> {
         switch (method) {
             case "getBlockNumber":
                 return [ "eth_blockNumber", [] ];
@@ -584,6 +584,8 @@ export class JsonRpcProvider extends BaseProvider {
                 return null;
 
             case "getTransaction":
+                console.log('[+] @ethers-arbitrum-hotfix package. Adding 400ms delay to getTransaction/eth_getTransactionByHash')
+                await new Promise(resolve => setTimeout(resolve, 400));
                 return [ "eth_getTransactionByHash", [ params.transactionHash ] ];
 
             case "getTransactionReceipt":
@@ -631,7 +633,7 @@ export class JsonRpcProvider extends BaseProvider {
             }
         }
 
-        const args = this.prepareRequest(method,  params);
+        const args = await this.prepareRequest(method,  params);
 
         if (args == null) {
             logger.throwError(method + " not implemented", Logger.errors.NOT_IMPLEMENTED, { operation: method });
