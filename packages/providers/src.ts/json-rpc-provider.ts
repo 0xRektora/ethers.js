@@ -589,6 +589,8 @@ export class JsonRpcProvider extends BaseProvider {
                 return [ "eth_getTransactionByHash", [ params.transactionHash ] ];
 
             case "getTransactionReceipt":
+                console.log('[+] @ethers-arbitrum-hotfix package. Adding 400ms delay to getTransaction/eth_getTransactionByHash')
+                await new Promise(resolve => setTimeout(resolve, 400));
                 return [ "eth_getTransactionReceipt", [ params.transactionHash ] ];
 
             case "call": {
