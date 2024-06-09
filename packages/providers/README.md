@@ -1,78 +1,16 @@
-Ethereum Providers
-==================
+## Arbitrum `eth_getTransactionByHash` hotfix
 
-This sub-module is part of the [ethers project](https://github.com/ethers-io/ethers.js).
+Issue can be described [here](https://github.com/OffchainLabs/nitro/pull/2336).
 
-It contains common Provider classes, utility functions for dealing with providers
-and re-exports many of the classes and types needed to implement a custom Provider.
+The modifications affect `@ethersproject/providers`. The forked packaged is named `ethersproject-providers-arbitrum-hotfix`.
 
-For more information, see the [documentation](https://docs.ethers.io/v5/api/providers/).
+Currently the latest version is `ethersproject-providers-arbitrum-hotfix@5.7.7`.
 
-
-Importing
----------
-
-Most users will prefer to use the [umbrella package](https://www.npmjs.com/package/ethers),
-but for those with more specific needs, individual components can be imported.
-
-```javascript
-const {
-
-    Provider,
-    BaseProvider,
-
-    JsonRpcProvider,
-    StaticJsonRpcProvider,
-    UrlJsonRpcProvider,
-
-    FallbackProvider,
-
-    AlchemyProvider,
-    CloudflareProvider,
-    EtherscanProvider,
-    InfuraProvider,
-    NodesmithProvider,
-
-    IpcProvider,
-
-    Web3Provider,
-
-    WebSocketProvider,
-
-    JsonRpcSigner,
-
-    getDefaultProvider,
-
-    getNetwork,
-
-    Formatter,
-
-    // Types
-
-    TransactionReceipt,
-    TransactionRequest,
-    TransactionResponse,
-
-    Listener,
-
-    ExternalProvider,
-
-    Block,
-    BlockTag,
-    EventType,
-    Filter,
-    Log,
-
-    JsonRpcFetchFunc,
-
-    Network,
-    Networkish
-
-} = require("@ethersproject/providers");
+To use this hotfix, use this yarn resolution in your `package.json`
+```
+"resolutions": {
+        "@ethersproject/providers": "npm:ethersproject-providers-arbitrum-hotfix@5.7.7"
+    }
 ```
 
-
-License
--------
-
-MIT License
+The hotfix is to add `300ms` delay to  the `getTransaction/eth_getTransactionByHash` call. A cached `chainID` has been added to check for Arbitrum chain ID (42161), and initiate the delay if this matches.

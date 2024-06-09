@@ -4,12 +4,12 @@ Issue can be described [here](https://github.com/OffchainLabs/nitro/pull/2336).
 
 The modifications affect `@ethersproject/providers`. The forked packaged is named `ethersproject-providers-arbitrum-hotfix`.
 
-Currently the latest version is `ethersproject-providers-arbitrum-hotfix@5.7.5`.
+Currently the latest version is `ethersproject-providers-arbitrum-hotfix@5.7.7`.
 
 To use this hotfix, use this yarn resolution in your `package.json`
 ```
 "resolutions": {
-        "@ethersproject/providers": "npm:ethersproject-providers-arbitrum-hotfix@5.7.5"
+        "@ethersproject/providers": "npm:ethersproject-providers-arbitrum-hotfix@5.7.7"
     }
 ```
 

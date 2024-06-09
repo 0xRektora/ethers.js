@@ -588,8 +588,10 @@ export class JsonRpcProvider extends BaseProvider {
             case "getTransaction":
                 const cachedChainId = await this._cache["chainId"];
                 if(!!cachedChainId && BigNumber.from(cachedChainId).toNumber() == 42161) {
-                    console.log('[+] @ethers-arbitrum-hotfix package. Adding 400ms delay to getTransaction/eth_getTransactionByHash')
+                    console.log('[+] @ethers-arbitrum-hotfix package. Adding 300ms delay to getTransaction/eth_getTransactionByHash')
                     await new Promise(resolve => setTimeout(resolve, 300));
+                }else{
+                    console.log('[+] @ethers-arbitrum-hotfix package. Skipping')
                 }
                 return [ "eth_getTransactionByHash", [ params.transactionHash ] ];
 

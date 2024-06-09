@@ -1,6 +1,6 @@
 {
   "name": "ethers-arbitrum-hotfix",
-  "private": true,
+  "version": "5.7.7",
   "scripts": {
     "preinstall": "npm run bootstrap-hoist",
     "postinstall": "node ./misc/admin/lib/cmds/update-depgraph && npm run bootstrap-link",
