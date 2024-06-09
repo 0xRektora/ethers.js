@@ -7,7 +7,7 @@
     "ipc-provider.js": "browser-ipc-provider.js",
     "ws.js": "browser-ws.js"
   },
-  "author": "Richard Moore <me@ricmoo.com>",
+  "author": "Richard Moore <me@ricmoo.com>|0xRektora",
   "browser": {
     "./lib/ipc-provider": "./lib/browser-ipc-provider.js",
     "./lib/ws": "./lib/browser-ws.js",
@@ -35,39 +35,13 @@
     "bech32": "1.1.4",
     "ws": "7.4.6"
   },
-  "description": "Ethereum Providers for ethers.",
-  "ethereum": "donations.ethers.eth",
-  "funding": [
-    {
-      "type": "individual",
-      "url": "https://gitcoin.co/grants/13/ethersjs-complete-simple-and-tiny-2"
-    },
-    {
-      "type": "individual",
-      "url": "https://www.buymeacoffee.com/ricmoo"
-    }
-  ],
-  "keywords": [
-    "Ethereum",
-    "ethers"
-  ],
-  "license": "MIT",
+  "description": "Ethereum Providers for ethers. (Arbitrum eth_getTransactionByHash hotfix )",
   "main": "./lib/index.js",
   "module": "./lib.esm/index.js",
-  "name": "@ethersproject/providers",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "directory": "packages/providers",
-    "type": "git",
-    "url": "git://github.com/ethers-io/ethers.js.git"
-  },
+  "name": "ethersproject-providers-arbitrum-hotfix",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "sideEffects": false,
-  "tarballHash": "0x7cd2809b100a1f50c6855245bf6ee7e848535447206f8fb83837445400204372",
   "types": "./lib/index.d.ts",
-  "version": "5.7.2"
+  "version": "5.7.3"
 }
