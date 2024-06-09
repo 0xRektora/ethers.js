@@ -468,6 +468,8 @@ export class JsonRpcProvider extends BaseProvider {
         }
 
         if (chainId != null) {
+            this._cache["chainId"] = chainId; // Cache the chainId to check on "getTransaction"
+
             const getNetwork = getStatic<(network: Networkish) => Network>(this.constructor, "getNetwork");
             try {
                 return getNetwork(BigNumber.from(chainId).toNumber());
@@ -584,8 +586,11 @@ export class JsonRpcProvider extends BaseProvider {
                 return null;
 
             case "getTransaction":
-                console.log('[+] @ethers-arbitrum-hotfix package. Adding 400ms delay to getTransaction/eth_getTransactionByHash')
-                await new Promise(resolve => setTimeout(resolve, 400));
+                const cachedChainId = await this._cache["chainId"];
+                if(!!cachedChainId && BigNumber.from(cachedChainId).toNumber() == 42161) {
+                    console.log('[+] @ethers-arbitrum-hotfix package. Adding 400ms delay to getTransaction/eth_getTransactionByHash')
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                }
                 return [ "eth_getTransactionByHash", [ params.transactionHash ] ];
 
             case "getTransactionReceipt":
